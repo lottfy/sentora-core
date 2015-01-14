@@ -1,6 +1,9 @@
 <?php
 
 /**
+ * @copyright 2014 Sentora Project (http://www.sentora.org/) 
+ * Sentora is a GPL fork of the ZPanel Project whose original header follows:
+ *
  * The template parser class.
  * @package zpanelx
  * @subpackage dryden -> ui
@@ -14,7 +17,7 @@ class ui_templateparser
 {
 
     /**
-     * Array of all the functions allowed by ZPanelX Template system with the pattern to identify them
+     * Array of all the functions allowed by Sentora template system with the pattern to identify them
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static public $Functions = array(
@@ -57,7 +60,8 @@ class ui_templateparser
     {
         $temp = $data;
         runtime_hook::Execute('OnBeforeTemplateProcessor');
-        foreach (ui_templateparser::$Functions as $Tag => $pattern) {
+        $functions = ui_templateparser::$Functions;
+        foreach ($functions as $Tag => $pattern) {
             $temp = call_user_func_array('ui_templateparser::Compile' . $Tag, array($pattern, $temp));
         }
         runtime_hook::Execute('OnAfterTemplateProcessor');
@@ -87,7 +91,7 @@ class ui_templateparser
     }
 
     /**
-     * Compiles ZPanelX loop template tags into valid PHP
+     * Compiles Sentora loop template tags into valid PHP
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static private function CompileLoop($value, $data)
@@ -105,7 +109,7 @@ class ui_templateparser
     }
 
     /**
-     * Compiles ZPanelX echo loop template tags into valid PHP
+     * Compiles Sentora echo loop template tags into valid PHP
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static private function CompileEchoLoop($value, $data)
@@ -123,7 +127,7 @@ class ui_templateparser
     }
 
     /**
-     * Compiles ZPanelX end loop template tags into valid PHP
+     * Compiles Sentora end loop template tags into valid PHP
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static private function CompileEndLoop($value, $data)
@@ -141,7 +145,7 @@ class ui_templateparser
     }
 
     /**
-     * Compiles ZPanelX if template tags into valid PHP
+     * Compiles Sentora if template tags into valid PHP
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static private function CompileIf($value, $data)
@@ -159,7 +163,7 @@ class ui_templateparser
     }
 
     /**
-     * Compiles ZPanelX end if template tags into valid PHP
+     * Compiles Sentora end if template tags into valid PHP
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static private function CompileEndIf($value, $data)
@@ -177,7 +181,7 @@ class ui_templateparser
     }
 
     /**
-     * Compiles ZPanelX lanuage template tags into valid PHP
+     * Compiles Sentora lanuage template tags into valid PHP
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static private function CompileLanuage($value, $data)
@@ -196,7 +200,7 @@ class ui_templateparser
     }
 
     /**
-     * Compiles ZPanelX function each template tags into valid PHP
+     * Compiles Sentora function each template tags into valid PHP
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static private function CompileFunctionEcho($value, $data)
@@ -216,7 +220,7 @@ class ui_templateparser
     }
 
     /**
-     * Compiles ZPanelX end if template tags into valid PHP
+     * Compiles Sentora end if template tags into valid PHP
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static private function CompileElse($value, $data)
@@ -234,7 +238,7 @@ class ui_templateparser
     }
 
     /**
-     * Compiles ZPanelX template class tag into valid PHP
+     * Compiles Sentora template class tag into valid PHP
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static private function CompileTemplateClass($value, $data)
@@ -341,7 +345,7 @@ class ui_templateparser
      */
     static public function setLocation()
     {
-        self::$storageLocation = ctrl_options::GetSystemOption('zpanel_root') . self::$storageLocation;
+        self::$storageLocation = ctrl_options::GetSystemOption('sentora_root') . self::$storageLocation;
     }
 
     /**
@@ -364,7 +368,7 @@ class ui_templateparser
     }
 
     /**
-     * All br tags to be used using the zpanel br tag loader
+     * All br tags to be used using the Sentora br tag loader
      * @author Sam Mottley (smottley@zpanelcp.com)
      */
     static function allowBr($templateCode)

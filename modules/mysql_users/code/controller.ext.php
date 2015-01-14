@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @copyright 2014 Sentora Project (http://www.sentora.org/) 
+ * Sentora is a GPL fork of the ZPanel Project whose original header follows:
  *
  * ZPanel - A Cross-Platform Open-Source Web Hosting Control panel.
  *
@@ -229,7 +231,7 @@ class module_controller extends ctrl_module
         $sql->execute();
         $sql = $zdbh->prepare("FLUSH PRIVILEGES");
         $sql->execute();
-        // Add user to zpanel database...
+        // Add user to Sentora database...
         $sql = $zdbh->prepare("INSERT INTO x_mysql_users (
 								mu_acc_fk,
 								mu_name_vc,
@@ -258,7 +260,7 @@ class module_controller extends ctrl_module
         $numrows->bindParam(':userid', $uid);
         $numrows->execute();
         $rowuser = $numrows->fetch();
-        // Add database to zpanel user account...
+        // Add database to Sentora user account...
         self::ExecuteAddDB($uid, $rowuser['mu_id_pk'], $database);
         runtime_hook::Execute('OnAfterCreateDatabaseUser');
         self::$ok = true;
@@ -703,7 +705,7 @@ class module_controller extends ctrl_module
 
     static function getMysqlUsagepChart()
     {
-        return '<img src="' . ui_tpl_assetfolderpath::Template() . 'images/unlimited.png" alt="' . ui_language::translate('Unlimited') . '"/>';
+        return '<img src="' . ui_tpl_assetfolderpath::Template() . 'img/misc/unlimited.png" alt="' . ui_language::translate('Unlimited') . '"/>';
     }
 
     static function getResult()

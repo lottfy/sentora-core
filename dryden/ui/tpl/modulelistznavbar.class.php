@@ -1,6 +1,9 @@
 <?php
 
 /**
+ * @copyright 2014 Sentora Project (http://www.sentora.org/) 
+ * Sentora is a GPL fork of the ZPanel Project whose original header follows:
+ *
  * Generic template place holder class.
  * @package zpanelx
  * @subpackage dryden -> ui -> tpl
@@ -49,7 +52,7 @@ class ui_tpl_modulelistznavbar
             $shortName = '<: ' . $shortName . ' :>';
             $mods = ui_moduleloader::GetModuleList($modcat['mc_id_pk']);
 
-            if (count($mods) > 0) {
+            if ($mods) {
                 $line .= '<li class="dropdown">';
 // IF Account, show Gravatar Image
                 if ($shortName == '<: Account :>') {

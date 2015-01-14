@@ -17,4 +17,4 @@ Directory structure:
 
 Developers resources:
 ---------------------
-A simple developers guide (for those who want to build modules for ZPanelX) can be found on our [website](http://www.zpanelcp.com/wp-content/uploads/2012/12/Module-developers-guide.pdf).
+A simple developers guide (for those who want to build modules for Sentora) can be found on our website http://docs.sentora.org/?node=9

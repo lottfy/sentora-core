@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @copyright 2014 Sentora Project (http://www.sentora.org/) 
+ * Sentora is a GPL fork of the ZPanel Project whose original header follows:
  *
  * ZPanel - A Cross-Platform Open-Source Web Hosting Control panel.
  *
@@ -152,6 +154,7 @@ class module_controller extends ctrl_module
             return false;
         }
         runtime_hook::Execute('OnBeforeCreateAlias');
+        $address = str_replace('*', '', $address);
         $fulladdress = $address . "@" . $domain;
         $destination = strtolower(str_replace(' ', '', $destination));
         self::$create = true;
@@ -271,7 +274,7 @@ class module_controller extends ctrl_module
 
     static function IsValidEmail($email)
     {
-        if (!preg_match('/^[a-z0-9]+([_\\.-][a-z0-9]+)*@([a-z0-9]+([\.-][a-z0-9]+)*)+\\.[a-z]{2,}$/i', $email)) {
+        if (!preg_match('/^([\*]|[a-z0-9]+([_\\.-][a-z0-9]+)*)@([a-z0-9]+([\.-][a-z0-9]+)*)+\\.[a-z]{2,}$/i', $email)) {
             return false;
         }
         return true;
@@ -400,11 +403,11 @@ class module_controller extends ctrl_module
         $currentuser = ctrl_users::GetUserDetail();
         $maximum = $currentuser['forwardersquota'];
         if ($maximum < 0) { //-1 = unlimited
-            return '<img src="' . ui_tpl_assetfolderpath::Template() . 'images/unlimited.png" alt="' . ui_language::translate('Unlimited') . '"/>';
+            return '<img src="' . ui_tpl_assetfolderpath::Template() . 'img/misc/unlimited.png" alt="' . ui_language::translate('Unlimited') . '"/>';
         } else {
             $used = ctrl_users::GetQuotaUsages('forwarders', $currentuser['userid']);
             $free = max($maximum - $used, 0);
-            return '<img src="etc/lib/pChart2/zpanel/z3DPie.php?score=' . $free . '::' . $used
+            return '<img src="etc/lib/pChart2/sentora/z3DPie.php?score=' . $free . '::' . $used
                     . '&labels=Free: ' . $free . '::Used: ' . $used
                     . '&legendfont=verdana&legendfontsize=8&imagesize=240::190&chartsize=120::90&radius=100&legendsize=150::160"'
                     . ' alt="' . ui_language::translate('Pie chart') . '"/>';

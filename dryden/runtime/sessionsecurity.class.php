@@ -1,5 +1,8 @@
 <?php
 /**
+ * @copyright 2014 Sentora Project (http://www.sentora.org/) 
+ * Sentora is a GPL fork of the ZPanel Project whose original header follows:
+ *
  * Session security class.
  * @package zpanelx
  * @subpackage dryden -> runtime
@@ -178,7 +181,7 @@ class runtime_sessionsecurity {
      * @return boolean.
      */
     static public function getSessionSecurityEnabled(){
-        if($_SESSION['zSessionSecurityEnabled'] == 1){
+        if(isset($_SESSION['zSessionSecurityEnabled']) && $_SESSION['zSessionSecurityEnabled'] == 1){ 
             return true;
         }else{
             return false;

@@ -1,6 +1,9 @@
 <?php
 
 /**
+ * @copyright 2014 Sentora Project (http://www.sentora.org/) 
+ * Sentora is a GPL fork of the ZPanel Project whose original header follows:
+ *
  * Initiates the database driver object and debug object and registers the $zdhb and $zlo globals for the framework.
  * @package zpanelx
  * @subpackage core
@@ -43,7 +46,7 @@ try {
                     color: #666;
             }
             </style>
-            <div class=\"dbwarning\"><strong>Critical Error:</strong> [0100] - Unable to connect or authenticate to the ZPanel database (<em>$dbname</em>).<p>We advice that you contact the server administrator to ensure that the database server is online and that the correct connection parameter are being used.</p></div>";
+            <div class=\"dbwarning\"><strong>Critical Error:</strong> [0100] - Unable to connect or authenticate to the Sentora database (<em>$dbname</em>).<p>We advice that you contact the server administrator to ensure that the database server is online and that the correct connection parameters are being used.</p></div>";
 
     die($error_html);
 }

@@ -1,6 +1,9 @@
 <?php
 
 /**
+ * @copyright 2014 Sentora Project (http://www.sentora.org/) 
+ * Sentora is a GPL fork of the ZPanel Project whose original header follows:
+ *
  * Database access class, enables PDO database access.
  * @package zpanelx
  * @subpackage dryden -> db
@@ -125,7 +128,7 @@ class db_driver extends PDO {
             $errormessage = $this->errorInfo();
             $clean = $this->cleanexpmessage($e);
             if (!runtime_controller::IsCLI()) {
-                $error_html = $this->css . "<div class=\"dbwarning\"><strong>Critical Error:</strong> [0144] - ZPanel database 'query' error (" . $this->errorCode() . ").<p>A database query has caused an error, the details of which can be found below.</p><p><strong>Error message:</strong></p><pre> " . $errormessage[2] . "</pre><p><strong>SQL Executed:</strong></p><pre>" . $query . "</pre><p><strong>Stack trace: </strong></p><pre>" . $clean . "</pre></div>";
+                $error_html = $this->css . "<div class=\"dbwarning\"><strong>Critical Error:</strong> [0144] - Sentora database 'query' error (" . $this->errorCode() . ").<p>A database query has caused an error, the details of which can be found below.</p><p><strong>Error message:</strong></p><pre> " . $errormessage[2] . "</pre><p><strong>SQL Executed:</strong></p><pre>" . $query . "</pre><p><strong>Stack trace: </strong></p><pre>" . $clean . "</pre></div>";
             } else {
                 $error_html = "SQL Error: " . $errormessage[2] . "\n";
             }
@@ -147,7 +150,7 @@ class db_driver extends PDO {
             $errormessage = $this->errorInfo();
             $clean = $this->cleanexpmessage($e);
             if (!runtime_controller::IsCLI()) {
-                $error_html = $this->css . "<div class=\"dbwarning\"><strong>Critical Error:</strong> [0144] - ZPanel database 'exec' error (" . $this->errorCode() . ").<p>A database query has caused an error, the details of which can be found below.</p><p><strong>Error message:</strong></p><pre> " . $errormessage[2] . "</pre><p><strong>SQL Executed:</strong></p><pre>" . $query . "</pre><p><strong>Stack trace: </strong></p><pre>" . $clean . "</pre></div>";
+                $error_html = $this->css . "<div class=\"dbwarning\"><strong>Critical Error:</strong> [0144] - Sentora database 'exec' error (" . $this->errorCode() . ").<p>A database query has caused an error, the details of which can be found below.</p><p><strong>Error message:</strong></p><pre> " . $errormessage[2] . "</pre><p><strong>SQL Executed:</strong></p><pre>" . $query . "</pre><p><strong>Stack trace: </strong></p><pre>" . $clean . "</pre></div>";
             } else {
                 $error_html = "SQL Error: " . $errormessage[2] . "\n";
             }
@@ -191,7 +194,7 @@ class db_driver extends PDO {
             $errormessage = $this->errorInfo();
             $clean = $this->cleanexpmessage($e);
             if (!runtime_controller::IsCLI()) {
-                $error_html = $this->css . "<div class=\"dbwarning\"><strong>Critical Error:</strong> [0144] - ZPanel database 'prepare' error (" . $this->errorCode() . ").<p>A database query has caused an error, the details of which can be found below.</p><p><strong>Error message:</strong></p><pre> " . $errormessage[2] . "</pre><p><strong>SQL Executed:</strong></p><pre>" . $query . "</pre><p><strong>Stack trace: </strong></p><pre>" . $clean . "</pre></div>";
+                $error_html = $this->css . "<div class=\"dbwarning\"><strong>Critical Error:</strong> [0144] - Sentora database 'prepare' error (" . $this->errorCode() . ").<p>A database query has caused an error, the details of which can be found below.</p><p><strong>Error message:</strong></p><pre> " . $errormessage[2] . "</pre><p><strong>SQL Executed:</strong></p><pre>" . $query . "</pre><p><strong>Stack trace: </strong></p><pre>" . $clean . "</pre></div>";
             } else {
                 $error_html = "SQL Error: " . $errormessage[2] . "\n";
             }
