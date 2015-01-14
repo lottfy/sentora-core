@@ -676,7 +676,7 @@ class module_controller extends ctrl_module
 
     static function IsValidEmail($email)
     {
-        if (!preg_match('/^[a-z0-9]+([_\\.-][a-z0-9]+)*@([a-z0-9]+([\.-][a-z0-9]+)*)+\\.[a-z]{2,}$/i', $email)) {
+        if (!preg_match('/^[a-z0-9]+([_\+\\.-][a-z0-9]+)*@([a-z0-9]+([\.-][a-z0-9]+)*)+\\.[a-z]{2,}$/i', $email)) {
             return false;
         }
         return true;
@@ -1008,6 +1008,9 @@ class module_controller extends ctrl_module
     static function getDefaultEmailBody()
     {
         global $controller;
+        if ($emailBodyFromSetting = ctrl_options::GetSystemOption('defaultEmailBody')){
+        	return $emailBodyFromSetting;
+        }
         return self::DefaultEmailBody();
     }
 
